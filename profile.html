@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Profile Page</title>
+</head>
+<body>
+    <div class="userInfo">
+    <div class="userName"></div>
+        <button id="logout">Logout</button>
+    </div>
+    <div class="profile-container">
+        <div class="particle-container"></div>
+        <div id="xp-all" class="profile-section">
+            <h2>XP Earned Over Time</h2>
+            <p id="xp-text"></p> <!-- The XP text will be inserted here -->
+        </div>
+
+        <div id="xp-project" class="profile-section">
+            <h2>Piscines</h2>
+            <div class="pie-container">
+                <div id="piscine-go"></div>
+                <!-- Central hover text div -->
+                <div id="hover-text-central">Hover over a pie slice</div>
+                <div id="piscine-js"></div>
+            </div>
+        </div>      
+
+        <div id="audit-ratio" class="profile-section">
+            <h2>Audit Ratio</h2>
+            <div id="audit-ratio-content">
+                <!-- The SVG for Audit Ratio will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="tokenRelated.js"></script>
+    <script src="auditRatio.js"></script>
+    <script src="piscines.js"></script>
+    <script src="userXp.js"></script>
+    <script src="logout.js"></script>
+    <script src="basicUserInfo.js"></script>
+    <script src="pageLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            function generateParticles(numParticles = 100) {
+            const particleContainer = document.querySelector('.particle-container');
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                // Randomize particle size
+                const sizeClass = ['small', 'medium', 'large'][Math.floor(Math.random() * 3)];
+                particle.classList.add(sizeClass);
+
+                // Randomize initial X position
+                particle.style.left = `${Math.random() * 100}vw`;
+
+                // Randomize delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+
+                particleContainer.appendChild(particle);
+                }
+            }
+
+            generateParticles(100);
+            displayAuditRatio(); // Call the function to load the audit ratio
+            displayGradeDistribution();
+            displayUserXp();
+            displayUserBasicInfo();
+        });
+    </script>
+</body>
+</html>
