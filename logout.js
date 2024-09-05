@@ -2,5 +2,5 @@ const logoutButton = document.getElementById("logout")
 
 logoutButton.addEventListener("click",()=>{
     localStorage.removeItem("jwtToken")
-    window.location.href = "login.html"
+    window.location.href = "index.html"
 })

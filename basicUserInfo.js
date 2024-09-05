@@ -38,7 +38,7 @@ function processBasicUserData(resultData){
     const loginNickname = resultData.login;
     const gender = resultData.attrs.gender;
 
-    return`<h1 id="name">${gender === "male" ? "Mr" : (gender === "female" ? "Mrs" : "")} ${firstName} ${lastName}<br> <br> Also Known As <br><br> ${loginNickname}</h1>`
+    return`<h1 id="name">${gender === "male" ? "Mr" : (gender === "female" ? "Mrs" : "")} ${firstName} ${lastName}<br> / <br> ${loginNickname}</h1>`
 }
 
 async function displayUserBasicInfo(){

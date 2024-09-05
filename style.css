@@ -1,50 +1,119 @@
 /*Login Section*/
 .login-form {
-    border: 10px solid;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 500px;
-    width: 400px;
-    background-color: aquamarine;
+    border-radius: 25px; /* Rounded edges */
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(0,212,255,1) 0%, rgba(2,0,36,1) 100%);
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 350px;
+    max-width: 100%;
+    text-align: center;
 }
 
-.login-form label{
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-#username, #password{
-    width:calc(100%-60%);
-    padding:10px;
+/* Style the form labels */
+.login-form label {
     font-size: 18px;
+    color: white;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+    width: 100%;
+}
+
+/* Style the input fields */
+#username, #password {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 10px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    outline: none;
 }
 
+#username::placeholder, #password::placeholder {
+    color: #ccc;
+}
+
+#username:focus, #password:focus {
+    border: 1px solid #00d4ff;
+}
+
+/* Style the login button */
 #login-btn {
     margin-top: 20px;
-    padding: 15px 30px;
-    background-color: blue;
+    padding: 12px 20px;
+    background-color: #4caf50;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 25px;
     cursor: pointer;
-    text-align: center;
-    width: 60%;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
-#login-btn:hover {
-    background-color: darkblue;
+/* Disable button style */
+#login-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    color: #666;
 }
+
+#login-btn:hover:enabled {
+    background-color: #43a047;
+}
+
+/* Add a subtle transition effect */
+#login-btn:active {
+    transform: scale(0.98);
+}
+
+/*Invalid Credentials*/
+/* Error message styling */
+.error-message {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.8); /* Red background with some transparency */
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 9999;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fade in/out animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.show {
+    display: block;
+    animation: fadeIn 0.5s forwards;
+}
+
+.hide {
+    animation: fadeOut 0.5s forwards;
+}
+
+
 
 /*Profile Section*/
 * {
@@ -156,34 +225,46 @@ h2 {
     }
 }
 
-/*User Basic Data*/
-.userInfo{
+/* Container for userInfo */
+.userInfo {
     height: 10%;
     width: 100%;
     padding-top: 3px;
-}
-.userInfo .userName h1{
-    text-align: center;
-    color: rgb(220, 65, 207);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* For absolute positioning of logout */
 }
 
+/* Style for the username */
+.userInfo .userName h1 {
+    text-align: center;
+    color: rgb(220, 65, 207);
+    margin: 0; /* Remove margin to prevent unwanted spacing */
+}
+
+/* Style for the logout button */
 #logout {
-    position: absolute;
-    right: 10px;
-    top: 10px;
+    position: fixed; /* Fixed positioning to always stay at the top of the screen */
+    top: 10%; /* Align at the top of the screen */
+    left: 25%; /* Center it horizontally */
+    transform: translateX(-50%); /* Adjust horizontal centering */
     padding: 8px 16px;
     background-color: #ff4757;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 24px;
     transition: background-color 0.3s ease;
+    z-index: 1000; /* Ensure it stays on top of other elements */
 }
 
 #logout:hover {
     background-color: #e04050;
 }
+
 
 .profile-section {
     background-color: white;
@@ -253,18 +334,40 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     font-family: Arial, sans-serif;
-    font-size: 24px;
+    font-size: 1vw; /* Use vw (viewport width) for scalable font size */
     font-weight: bold;
     opacity: 0;
     transition: opacity 0.3s ease;
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    #hover-text-central {
+        font-size: 3vw; /* Increase the size slightly for medium screens */
+        top: 55%; /* Adjust positioning */
+    }
+}
+
+@media (max-width: 480px) {
+    #hover-text-central {
+        font-size: 4vw; /* Further adjust for small screens */
+        top: 60%; /* Adjust positioning to fit between pie charts */
+    }
 }
 
 /* Pie charts setup */
 .pie {
-    width: 200px;
-    height: 200px;
+    width: 100%; /* Make the width responsive */
+    max-width: 200px; /* Set a maximum width */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 50%;
     position: relative;
+}
+
+.pie svg {
+    width: 100%; /* Ensure the SVG scales with its container */
+    height: auto;
 }
 
 /* SVG styling */
@@ -285,26 +388,27 @@ h2 {
 
 /* Stroke colors for pass and fail */
 .pass {
-    stroke: green;
+    stroke: rgb(28, 46, 165);
 }
 
 .fail {
-    stroke: red;
+    stroke: rgb(174, 57, 139);
 }
 
 /* Hover effect: Highlight pass/fail slices */
-.pie:hover .pass:hover {
+.pie:hover .pass:hover, .pie:hover .fail:hover {
     stroke-width: 50;
 }
 
-.pie:hover .fail:hover {
-    stroke-width: 50;
+.pie:hover .pass:hover + #hover-text-central,
+.pie:hover .fail:hover + #hover-text-central {
+    opacity: 1;
 }
 
 /* Styling for the pie chart containers */
 #piscine-go{
     width: 30%;
-    margin-left: 17%;
+    margin-left: 11%;
     margin-right: 18%;
 }
 
@@ -313,7 +417,17 @@ h2 {
     margin-right: 3%;
 }
 
+@media (max-width: 768px) {
+    #piscine-go, #piscine-js {
+        width: 40%; /* Adjust the width on smaller screens */
+    }
+}
 
+@media (max-width: 480px) {
+    #piscine-go, #piscine-js {
+        width: 35%; /* Further adjust for mobile screens */
+    }
+}
 
 /* Audit Ratio - Grid Placement */
 #audit-ratio {
@@ -344,7 +458,7 @@ h2 {
 }
 
 #current-ratio-text{
-    font-size: 10px;
+    font-size: 1vw;
 }
 
 #done-bar {

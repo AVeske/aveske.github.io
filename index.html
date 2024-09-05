@@ -4,18 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
+    <!-- Error message will appear here above the login box -->
+    <div id="error-message" class="error-message">Invalid Credentials</div>
+
     <div class="login-form">
         <label for="username">Username</label>
-        <input id="username" type="text" required>
+        <input id="username" type="text" placeholder="Username or Email" required>
         
         <label for="password">Password</label>
-        <input id="password" type="password" required>
-        <button id="login-btn">Login</button>
+        <input id="password" type="password" placeholder="Password" required>
+        <button id="login-btn" disabled>Login</button>
     </div>
+
     <script src="login.js"></script>
-    <script src="pageLoader.js"></script>
 </body>
 </html>

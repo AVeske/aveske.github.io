@@ -70,14 +70,12 @@ function generateInteractivePieChartSVG(percentage, label) {
             <!-- Fail Slice -->
             <circle class="fail" r="${radius}" cx="60" cy="60" 
                 stroke-dasharray="${failLength} ${circumference}" 
-                stroke-dashoffset="0"
-                style="stroke: red;"></circle>
+                stroke-dashoffset="0"></circle>
             
             <!-- Pass Slice -->
             <circle class="pass" r="${radius}" cx="60" cy="60" 
                 stroke-dasharray="${passLength} ${circumference}" 
-                stroke-dashoffset="${-failLength}"
-                style="stroke: green;"></circle>
+                stroke-dashoffset="${-failLength}"></circle>
         </svg>
     </div>
     `;
@@ -145,8 +143,3 @@ async function displayGradeDistribution() {
         document.getElementById('piscine-js').innerHTML = `<svg width="120" height="120"><text x="50%" y="50%" text-anchor="middle" fill="red">Error</text></svg>`;
     }
 }
-
-
-
-
-
